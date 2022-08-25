@@ -36,14 +36,8 @@ def receive():
         client, address = server.accept()
         print("Connected with {}".format(str(address)))
 
-        # Request And Store Nickname
-        client.send('NICK'.encode('ascii'))
         clients.append(client)
 
-        # Print And Broadcast Nickname
-        client.send('Connected to server!'.encode('ascii'))
-
-        # Start Handling Thread For Client
         thread = threading.Thread(target=handle, args=(client,))
         thread.start()
 

@@ -8,8 +8,6 @@ client.connect(('127.0.0.1', 55555))
 def receive():
     while True:
         try:
-            # Receive Message From Server
-            # If 'NICK' Send Nickname
             message = client.recv(1024).decode('ascii')
             print(message)
         except:
@@ -19,6 +17,5 @@ def receive():
             break
 
 
-# Starting Threads For Listening And Writing
 receive_thread = threading.Thread(target=receive)
 receive_thread.start()
